@@ -12,6 +12,14 @@ import ru.web_str.sweater.repos.MessageRepos;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * TODO list:
+ * 1. Выбрать каким фреймворком обрабатывать json файл
+ * 2. Собрать новый спринг прокут
+ * 3. Поключить выбранный json фреймворк
+ * 4. Написать и заполнить класс Form полями необходимыми для валидации
+ * 5. Написать контроллер валидации.
+ */
 @Controller
 public class MainController {
     @Autowired
@@ -30,7 +38,10 @@ public class MainController {
     }
 
     @PostMapping("/main")
-    public String add(@RequestParam String text, @RequestParam String tag, Map<String, Object> model) {
+    public String add(
+
+            @RequestParam String text,
+            @RequestParam String tag, Map<String, Object> model) {
         Message message = new Message(text, tag);
         messageRepos.save(message);
         Iterable<Message> messages = messageRepos.findAll();
